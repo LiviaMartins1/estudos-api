@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Estudos</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f3f1fa;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            width: 100%;
+            max-width: 500px;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px #00000012;
+        }
+
+        h1 {
+            text-align: center;
+            color: #6654c0;
+            margin-bottom: 10px;
+        }
+
+        .subtitulo {
+            text-align: center;
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        .campo {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: #6654c0;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #6654c0;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #5140a5;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Cadastro de Estudos</h1>
+    <p class="subtitulo">Organize seus estudos e sua rotina!</p>
+
+    <form id="formEstudo">
+
+        <div class="campo">
+            <label for="titulo">Título do estudo</label>
+            <input type="text" id="titulo"
+                   placeholder="Digite o título" required>
+        </div>
+
+        <div class="campo">
+            <label for="descricao">Descrição</label>
+            <textarea id="descricao"
+                      placeholder="Descreva seu estudo" required></textarea>
+        </div>
+
+        <div class="campo">
+            <label for="materia">Matéria</label>
+            <input type="text" id="materia"
+                   placeholder="Ex: Java, Matemática..." required>
+        </div>
+
+        <div class="campo">
+            <label for="dataEstudo">Data do estudo</label>
+            <input type="date" id="dataEstudo" required>
+        </div>
+
+        <div class="campo">
+            <label for="status">Status</label>
+            <select id="status" required>
+                <option value="">Selecione o status</option>
+                <option value="PENDENTE">Pendente</option>
+                <option value="EM_ANDAMENTO">Em andamento</option>
+                <option value="CONCLUIDO">Concluído</option>
+            </select>
+        </div>
+
+        <button type="submit">Cadastrar estudo</button>
+
+    </form>
+
+</div>
+
+<script>
+    document.getElementById("formEstudo")
+        .addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+            const estudo = {
+                titulo: document.getElementById("titulo").value,
+                descricao: document.getElementById("descricao").value,
+                materia: document.getElementById("materia").value,
+                dataEstudo: document.getElementById("dataEstudo").value,
+                status: document.getElementById("status").value
+            };
+
+            try {
+                const resposta = await fetch("/estudos", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(estudo)
+                });
+
+                if (!resposta.ok) {
+                    throw new Error("Erro ao cadastrar");
+                }
+
+                alert("Estudo cadastrado com sucesso!");
+                this.reset();
+
+            } catch (erro) {
+                alert("Não foi possível cadastrar. Verifique o servidor.");
+                console.error(erro);
+            }
+        });
+</script>
+
+</body>
+</html>
