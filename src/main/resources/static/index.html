@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Estudos</title>
+    <title>StudySpace - Cadastro</title>
 
     <style>
         * {
@@ -15,68 +15,68 @@
         }
 
         body {
-            background: #f3f1fa;
             min-height: 100vh;
+            background: linear-gradient(135deg, #fce4ec, #e8eaf6);
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 30px 15px;
         }
 
         .container {
             background: white;
             width: 100%;
-            max-width: 500px;
+            max-width: 480px;
             padding: 35px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px #00000012;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.10);
         }
 
-        h1 {
+        .logo {
             text-align: center;
-            color: #6654c0;
-            margin-bottom: 10px;
+            margin-bottom: 25px;
         }
 
-        .subtitulo {
-            text-align: center;
+        .logo h1 {
+            color: #d45d91;
+            font-size: 30px;
+        }
+
+        .logo p {
             color: #888;
-            margin-bottom: 30px;
+            margin-top: 8px;
+            font-size: 14px;
         }
 
-        .campo {
-            margin-bottom: 18px;
+        .form-group {
+            margin-bottom: 17px;
         }
 
         label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 7px;
+            color: #444;
             font-weight: bold;
-            color: #333;
+            font-size: 14px;
         }
 
-        input, textarea, select {
+        input, select {
             width: 100%;
-            padding: 13px;
+            padding: 12px;
             border: 1px solid #ddd;
             border-radius: 8px;
-            font-size: 14px;
             outline: none;
+            font-size: 14px;
         }
 
-        input:focus, textarea:focus, select:focus {
-            border-color: #6654c0;
-        }
-
-        textarea {
-            height: 100px;
-            resize: none;
+        input:focus, select:focus {
+            border-color: #d45d91;
         }
 
         button {
             width: 100%;
-            padding: 14px;
-            background: #6654c0;
+            padding: 13px;
+            background: #d45d91;
             color: white;
             border: none;
             border-radius: 8px;
@@ -87,95 +87,207 @@
         }
 
         button:hover {
-            background: #5140a5;
+            background: #bd477b;
+        }
+
+        .login {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .login a {
+            color: #d45d91;
+            text-decoration: none;
+            font-weight: bold;
         }
     </style>
 </head>
+
 
 <body>
 
 <div class="container">
 
-    <h1>Cadastro de Estudos</h1>
-    <p class="subtitulo">Organize seus estudos e sua rotina!</p>
+    <div class="logo">
+        <h1>StudySpace 📚</h1>
+        <p>Organize seus estudos e alcance seus objetivos!</p>
+    </div>
 
-    <form id="formEstudo">
+    <!-- FORMULÁRIO DE CADASTRO -->
+    <form id="formCadastro">
 
-        <div class="campo">
-            <label for="titulo">Título do estudo</label>
-            <input type="text" id="titulo"
-                   placeholder="Digite o título" required>
+        <div class="form-group">
+            <label for="nome">Nome completo</label>
+            <input type="text" id="nome" name="nome"
+                   placeholder="Digite seu nome" required>
         </div>
 
-        <div class="campo">
-            <label for="descricao">Descrição</label>
-            <textarea id="descricao"
-                      placeholder="Descreva seu estudo" required></textarea>
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email"
+                   placeholder="Digite seu e-mail" required>
         </div>
 
-        <div class="campo">
-            <label for="materia">Matéria</label>
-            <input type="text" id="materia"
-                   placeholder="Ex: Java, Matemática..." required>
+        <div class="form-group">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha"
+                   placeholder="Crie uma senha" required>
         </div>
 
-        <div class="campo">
-            <label for="dataEstudo">Data do estudo</label>
-            <input type="date" id="dataEstudo" required>
+        <div class="form-group">
+            <label for="confirmar">Confirmar senha</label>
+            <input type="password" id="confirmar" name="confirmar"
+                   placeholder="Confirme sua senha" required>
         </div>
 
-        <div class="campo">
-            <label for="status">Status</label>
-            <select id="status" required>
-                <option value="">Selecione o status</option>
-                <option value="PENDENTE">Pendente</option>
-                <option value="EM_ANDAMENTO">Em andamento</option>
-                <option value="CONCLUIDO">Concluído</option>
+        <div class="form-group">
+            <label for="nascimento">Data de nascimento</label>
+            <input type="date" id="nascimento" name="nascimento" required>
+        </div>
+
+        <div class="form-group">
+            <label for="escolaridade">Nível de escolaridade</label>
+            <select id="escolaridade" name="escolaridade" required>
+                <option value="" selected disabled>Selecione uma opção</option>
+                <option value="ENSINO_FUNDAMENTAL">Ensino Fundamental</option>
+                <option value="ENSINO_MEDIO">Ensino Médio</option>
+                <option value="ENSINO_TECNICO">Ensino Técnico</option>
+                <option value="ENSINO_SUPERIOR">Ensino Superior</option>
             </select>
         </div>
 
-        <button type="submit">Cadastrar estudo</button>
+        <button type="submit">Criar minha conta</button>
 
     </form>
+
+    <!-- TELA DE CADASTRO REALIZADO -->
+    <div id="confirmacao" style="display: none;">
+
+        <h2 style="color: #d45d91; text-align: center;">
+            🎉 Cadastro realizado!
+        </h2>
+
+        <p style="text-align: center; margin: 12px 0 25px; color: #888;">
+            Sua conta no StudySpace foi criada com sucesso!
+        </p>
+
+        <h3 style="margin-bottom: 15px;">Seus dados cadastrados:</h3>
+
+        <div class="form-group">
+            <label>Nome completo</label>
+            <p id="dadosNome"></p>
+        </div>
+
+        <div class="form-group">
+            <label>E-mail</label>
+            <p id="dadosEmail"></p>
+        </div>
+
+        <div class="form-group">
+            <label>Data de nascimento</label>
+            <p id="dadosNascimento"></p>
+        </div>
+
+        <div class="form-group">
+            <label>Escolaridade</label>
+            <p id="dadosEscolaridade"></p>
+        </div>
+
+        <button type="button" onclick="voltarCadastro()">
+            Voltar
+        </button>
+
+    </div>
+
+    <div class="login" id="loginLink">
+        Já possui uma conta?
+        <a href="login.html">Fazer login</a>
+    </div>
 
 </div>
 
 <script>
-    document.getElementById("formEstudo")
-        .addEventListener("submit", async function(event) {
 
-            event.preventDefault();
+    document.getElementById("formCadastro").addEventListener("submit", async function(event) {
 
-            const estudo = {
-                titulo: document.getElementById("titulo").value,
-                descricao: document.getElementById("descricao").value,
-                materia: document.getElementById("materia").value,
-                dataEstudo: document.getElementById("dataEstudo").value,
-                status: document.getElementById("status").value
-            };
+        event.preventDefault();
 
-            try {
-                const resposta = await fetch("/estudos", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(estudo)
-                });
+        const senha = document.getElementById("senha").value;
+        const confirmar = document.getElementById("confirmar").value;
 
-                if (!resposta.ok) {
-                    throw new Error("Erro ao cadastrar");
-                }
+        if (senha !== confirmar) {
+            alert("As senhas não coincidem!");
+            return;
+        }
 
-                alert("Estudo cadastrado com sucesso!");
-                this.reset();
+        const aluno = {
+            nome: document.getElementById("nome").value,
+            email: document.getElementById("email").value,
+            senha: senha,
+            dataNascimento: document.getElementById("nascimento").value,
+            escolaridade: document.getElementById("escolaridade").value
+        };
 
-            } catch (erro) {
-                alert("Não foi possível cadastrar. Verifique o servidor.");
-                console.error(erro);
+        try {
+
+            const resposta = await fetch("/api/estudos", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(aluno)
+            });
+
+            if (resposta.ok) {
+
+                document.getElementById("dadosNome").textContent = aluno.nome;
+                document.getElementById("dadosEmail").textContent = aluno.email;
+
+                const data = aluno.dataNascimento.split("-");
+                document.getElementById("dadosNascimento").textContent =
+                    `${data[2]}/${data[1]}/${data[0]}`;
+
+                const escolaridades = {
+                    ENSINO_FUNDAMENTAL: "Ensino Fundamental",
+                    ENSINO_MEDIO: "Ensino Médio",
+                    ENSINO_TECNICO: "Ensino Técnico",
+                    ENSINO_SUPERIOR: "Ensino Superior"
+                };
+
+                document.getElementById("dadosEscolaridade").textContent =
+                    escolaridades[aluno.escolaridade];
+
+                document.getElementById("formCadastro").style.display = "none";
+                document.getElementById("confirmacao").style.display = "block";
+                document.getElementById("loginLink").style.display = "none";
+
+            } else {
+                alert("Erro ao realizar cadastro!");
+                console.log(await resposta.text());
             }
-        });
+
+        } catch (erro) {
+            alert("Erro de conexão com o servidor!");
+            console.error(erro);
+        }
+
+    });
+
+    function voltarCadastro() {
+
+        document.getElementById("formCadastro").reset();
+
+        document.getElementById("formCadastro").style.display = "block";
+        document.getElementById("confirmacao").style.display = "none";
+        document.getElementById("loginLink").style.display = "block";
+
+    }
+
 </script>
 
 </body>
 </html>
+
+
